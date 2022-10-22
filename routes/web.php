@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\contactController;
-use App\Http\Controllers\dashboardController;
-use App\Http\Controllers\jobController;
-use App\Http\Controllers\newformController;
+use App\Http\Controllers\admindashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');});
 
-Route::get('contact', [contactController::class, 'getContactPage']);
-Route::post("contact-data-send", [contactController::class, "sendData"]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('job-posting-page', [jobController::class, 'getJobPage']);
-Route::post('posted-jobs-data', [jobController::class, 'sendPostedJobsData']);
+require __DIR__.'/auth.php';
 
-Route::get('dashboard', [dashboardController::class, 'getDashboard']);
-Route::get('dashboard', [dashboardController::class, 'userdata']);
 
-Route::get('newform', [newformController::class ,'getNewForm']);
-Route::post('newpost', [newformController::class ,'sendNewPost']);
+Route::get('admindashboard', [admindashboardController::class , "getAdminDashBoard"])->middleware(['auth'])->name('admindashboard');
+
+

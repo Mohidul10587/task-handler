@@ -22,8 +22,13 @@ class dashboardController extends Controller{
     }
     public function userdata(Request $req)
     {
-        $data = DB::table('postdatas')->get();
-        return view('dashBoard', ['data' => $data]);
+
+        // $data = DB::select('select * from users where id = :id', ['id' => 1])->get();
+
+        // $data = DB::table('postdatas')->where('id', '1')->first();
+ 
+        return DB::table('postdatas')->get();
+        // return view('dashboard', ['data' => $data]);
     }
 }
 
