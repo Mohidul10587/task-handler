@@ -18,7 +18,7 @@ class jobController extends Controller
 {
     public function getJobPage()
     {
-        return view("job");
+        return view("admin/job");
     }
     public function sendPostedJobsData(Request $req)
     {
