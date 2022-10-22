@@ -16,7 +16,7 @@ class Controller extends BaseController
 
 class newformController extends Controller
 {
-    public function getNewform()
+    public function getNewForm()
     {
         return view("newform");
     }
