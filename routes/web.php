@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\jobController;
-
+use App\Http\Controllers\newformController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +25,7 @@ Route::post("contact-data-send" , [contactController::class , "sendData"]);
 
 Route::get('job-posting-page', [jobController::class ,'getJobPage']);
 Route::post('posted-jobs-data', [jobController::class ,'sendPostedJobsData']);
+
+
+Route:: get('newform',[newformController:: class , 'getNewform']);
+Route:: post('newpost',[newformController:: class , 'sendNewPost']);
