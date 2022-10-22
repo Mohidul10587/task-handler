@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\contactController;
-use App\Http\Controllers\dashboardController;
-use App\Http\Controllers\jobController;
-use App\Http\Controllers\newformController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,14 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('contact', [contactController::class, 'getContactPage']);
-Route::post("contact-data-send", [contactController::class, "sendData"]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('job-posting-page', [jobController::class, 'getJobPage']);
-Route::post('posted-jobs-data', [jobController::class, 'sendPostedJobsData']);
-
-Route::get('dashboard', [dashboardController::class, 'getDashboard']);
-Route::get('dashboard', [dashboardController::class, 'userdata']);
-
-Route::get('newform', [newformController::class ,'getNewForm']);
-Route::post('newpost', [newformController::class ,'sendNewPost']);
+require __DIR__.'/auth.php';
